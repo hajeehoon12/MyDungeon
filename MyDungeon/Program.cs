@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Threading;
 
 namespace MyDungeon
 {
@@ -31,7 +32,7 @@ namespace MyDungeon
                 Console.WriteLine($"탐험가 ★{player.Name}★님 REDSTAR 마을에 오신 여러분 환영합니다!!" +
                 "\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.");
 
-                Console.WriteLine("\n1. 상태 보기 \n2. 인벤토리 \n3. 상점 \n4. 던전 \n5. 휴식하기");
+                Console.WriteLine("\n1. 상태 보기 \n2. 인벤토리 \n3. 상점 \n4. 던전 \n5. 휴식하기 \n6. 저장하기 \n7. 게임종료");
                 Console.Write("\n원하시는 행동을 숫자로 입력해주세요 : ");
                 actIsNum = int.TryParse(Console.ReadLine(), out act);
             } while (!actIsNum);
@@ -62,9 +63,25 @@ namespace MyDungeon
                     player.DoCamping(player);
                     break;
                 case 6:
-                    Console.WriteLine();
+                    Console.WriteLine("\n☆저장이 선택되었습니다.☆");
                     // 저장하기 코드 입력할것
                     SelectAct(player); // 저장하고 메인메뉴로 다시
+                    break;
+                case 7:
+                    Console.WriteLine("\n☆게임 종료를 선택하셨습니다! 2초안에 아무 입력이 없으면 종료됩니다!!☆");
+                    int tempEnd = -999;
+                    bool tempNum = int.TryParse(Console.ReadLine(), out tempEnd);
+                    Thread.Sleep(2000);
+                    if (tempEnd == -999)
+                    {
+                        Environment.Exit(0); // 게임 종료
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n☆게임 종료를 취소했습니다!☆"); // 취소 후 메인화면으로 복귀
+                        SelectAct(player);
+                    }
+                    
                     break;
 
                 default:
