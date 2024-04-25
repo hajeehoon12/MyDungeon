@@ -1,10 +1,10 @@
 # MyDungeon
 Dungeon Console Game by C#
 
-# Chapter 2. 프로그래밍 기초 개인과제
+# Chapter 2. 나만의 던전 만들기(하지훈) 
 
 <aside>
-💡 스파르타 던전 (Text 게임) 만들기
+💡 개인 던전 (Text 게임) 만들기
 
 </aside>
 
