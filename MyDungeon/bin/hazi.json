@@ -1,21 +1,21 @@
 {
   "Name": "hazi",
   "stat": {
-    "Level": 1,
-    "Attack": 10.0,
-    "Defense": 8,
-    "Hp": 100,
-    "Gold": 1000.0,
-    "MaxHp": 100,
-    "Exp": 0,
-    "AttackInc": 0,
-    "DefInc": 0
+    "Level": 4,
+    "Attack": 11.5,
+    "Defense": 11,
+    "Hp": 137,
+    "Gold": 4900.0,
+    "MaxHp": 160,
+    "Exp": 1,
+    "AttackInc": 11,
+    "DefInc": 21
   },
   "inven": {
     "ItemInfo": [
       {
         "ItemType": 0,
-        "IsEquip": false,
+        "IsEquip": true,
         "ItemName": "        목검        ",
         "ItemAtk": 5,
         "ItemDef": 0,
@@ -45,7 +45,7 @@
       },
       {
         "ItemType": 2,
-        "IsEquip": false,
+        "IsEquip": true,
         "ItemName": "    낡은목걸이      ",
         "ItemAtk": 1,
         "ItemDef": 1,
@@ -60,8 +60,28 @@
         "ItemAtk": 4,
         "ItemDef": 0,
         "ItemExp": "사용자의 상처를 치유하고 활력이 돋게 하는 물약",
-        "Amount": 3,
+        "Amount": 0,
         "ItemPrice": 1000
+      },
+      {
+        "ItemType": 3,
+        "IsEquip": true,
+        "ItemName": "      가죽갑옷      ",
+        "ItemAtk": 0,
+        "ItemDef": 10,
+        "ItemExp": "질긴가죽으로 만든 가죽갑옷",
+        "Amount": 1,
+        "ItemPrice": 2000
+      },
+      {
+        "ItemType": 1,
+        "IsEquip": true,
+        "ItemName": "    튼튼한방패      ",
+        "ItemAtk": 5,
+        "ItemDef": 10,
+        "ItemExp": "가벼운 공격은 막을 것 같은 튼튼한 방패",
+        "Amount": 1,
+        "ItemPrice": 3000
       }
     ]
   }

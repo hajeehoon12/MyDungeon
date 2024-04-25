@@ -88,7 +88,7 @@ namespace MyDungeon
             {
                 Console.WriteLine($"방어력 : {Defense}");
             }
-            Console.WriteLine($"체 력 : {Hp}");
+            Console.WriteLine($"체 력 : {Hp} / {MaxHp}");
             Console.WriteLine($"Gold : {Gold} G");
             Console.WriteLine("=================================\n\n");
 
@@ -124,7 +124,7 @@ namespace MyDungeon
 
         public void isLevelUp() // 레벨업 검사
         {
-            if (Exp == Level) // 경험치가 최대치에 도달하면 레벨업 진행
+            if (Exp == 2 * Level) // 경험치가 최대치에 도달하면 레벨업 진행
             {
                 Attack += 0.5f;
                 Defense += 1;

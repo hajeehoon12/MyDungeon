@@ -35,7 +35,7 @@ namespace MyDungeon
             Market_Item.Add(new ItemData(1, "강철 방패", 10, 10, 5000, 1, "무겁지만 제성능을 톡톡히 해내는 강철로 만든 방패"));
             Market_Item.Add(new ItemData(2, "화려한목걸이", 15, 15, 30000, 1, "사용자에게 미지의 힘을 화려한 목걸이"));
 
-            Market_Item.Add(new ItemData(4, "회복물약", 4, 0, 1000, 99, "사용자의 상처를 치유하고 활력이 돋게 하는 물약"));
+            Market_Item.Add(new ItemData(4, "회복물약", 0, 0, 1000, 99, "사용자의 상처를 치유하고 활력이 돋게 하는 물약"));
 
             
 

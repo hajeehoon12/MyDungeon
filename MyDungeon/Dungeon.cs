@@ -56,14 +56,14 @@ namespace MyDungeon
             var leveling = Enum.GetValues(typeof(leveldun));
 
             (int atk_inc, int def_inc)= PlayerEquipMent(player);
-
+            player.stat.isLevelUp(); // 레벨업 갱신 검사
             Console.WriteLine("\n=================================================================================");
             Console.WriteLine("★던전입장★\n");
             Console.WriteLine("이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n");
             Console.WriteLine($"현재 당신의 체력: {player.stat.Hp} / {player.stat.MaxHp}");
             Console.WriteLine($"현재 당신의 자금: {player.stat.Gold}");
             Console.WriteLine($"현재 당신의 레벨: {player.stat.Level} , 공격력: {player.stat.Attack} +({atk_inc}) , 방어력: {player.stat.Defense} + ({def_inc})");
-            Console.WriteLine($"레벨업까지 남은 경험치 : {player.stat.Level - player.stat.Exp}");
+            Console.WriteLine($"레벨업까지 남은 경험치 : {player.stat.Level * 2 - player.stat.Exp}");
 
             Console.WriteLine("\n\n-1. 나가기");
 
@@ -139,7 +139,7 @@ namespace MyDungeon
             int num2 = rand1.Next((int)player.stat.Attack, (int)player.stat.Attack * 2);
 
             Random rand3 = new Random(); // 긍,부정적 효과 랜덤
-            int num3 = rand3.Next(0, 5);
+            int num3 = rand3.Next(0, 6);
 
             Random rand4 = new Random(); // 증감폭 랜덤
             int num4 = rand4.Next(25, 75);
@@ -202,9 +202,10 @@ namespace MyDungeon
                     case 1: // 체력 절반 , 체력 소진
 
                         Double decrate = Math.Round(100.0d * (1.0d - (0.5d * Randvar)));
+                        Console.WriteLine($"{player.Name} 이(가) 몬스터들과의 사투 끝에 겨우 살아서 도망쳐나옵니다!");
                         Console.WriteLine("★★★★★★★★★★★★★★★★★★★★★★★★★");
                         Console.WriteLine("[탐험 결과]");
-                        Console.WriteLine($"{player.Name} 이(가) 도주하는데 온힘을 쏟아 체력이 {Math.Round(decrate)} % 만큼 감소 되었습니다.");
+                        Console.WriteLine($"{player.Name} 이(가) 도주하는데 온힘을 쏟아 현재 체력의 {Math.Round(decrate)} % 만큼 감소 되었습니다.");
                         Console.WriteLine($"\n체력 {player.stat.Hp}->{(int)(player.stat.Hp * (0.5 * Randvar))}");
                         Console.WriteLine("★★★★★★★★★★★★★★★★★★★★★★★★★");
                         player.stat.Hp = (int)(player.stat.Hp * (0.5 * Randvar));
@@ -212,10 +213,10 @@ namespace MyDungeon
                         break;
                     case 2:
                     case 3: // 함정 체력 -20
-
+                        Console.WriteLine($"{player.Name} 이(가) 던전의 함정을 발동시켰습니다."  );
                         Console.WriteLine("=================================");
                         Console.WriteLine("[탐험 결과]");
-                        Console.WriteLine($"{player.Name} 이(가) 도주중 치명적인 함정을 작동시켜 체력을 {Math.Round(Randvar * 20)} 잃었습니다!");
+                        Console.WriteLine($"{player.Name} 이(가) 던전의 치명적인 함정으로 인해 {Math.Round(Randvar * 20)} 잃었습니다!");
                         Console.WriteLine($"\n체력 {player.stat.Hp}->{player.stat.Hp - Math.Round(Randvar * 20)}");
                         Console.WriteLine("=================================");
                         player.stat.Hp = (int)(player.stat.Hp - Math.Round(Randvar * 20));
@@ -223,16 +224,30 @@ namespace MyDungeon
                         break;
 
                     case 4: // 정신력으로 인한 최대체력감소
-
+                        Console.WriteLine($"감당할 수 없는 강력한 몬스터가 나타나 {player.Name}이 도망칩니다!");
                         Console.WriteLine("=================================");
                         Console.WriteLine("[탐험 결과]");
-                        Console.WriteLine($"{player.Name} 이(가) 마음이 꺾여 최대체력이 영구적으로 5 감소합니다!");
+                        Console.WriteLine($"{player.Name} 이(가) 마음이 꺾여 최대체력이 영구적으로 {Math.Round(Randvar * 5)} 감소합니다!");
                         Console.WriteLine($"\n최대 체력 {player.stat.MaxHp}->{player.stat.MaxHp - Math.Round(Randvar *5) }");
                         Console.WriteLine("=================================");
-                        player.stat.Hp = (int)(player.stat.MaxHp - Math.Round(Randvar * 5));
+                        player.stat.MaxHp = (int)(player.stat.MaxHp - Math.Round(Randvar * 5));
+                        if (player.stat.MaxHp < player.stat.Hp)
+                        {
+                            player.stat.Hp = player.stat.MaxHp;
+                        }
+                        
 
                         break;
+                    case 5: // 무사고
+                        Console.WriteLine($"{player.Name} 이(가) 배가고파 던전탐험을 포기합니다.");
+                        Console.WriteLine("=================================");
+                        Console.WriteLine("[탐험 결과]");
+                        Console.WriteLine("아무일도 일어나지 않습니다.");
+                        Console.WriteLine("=================================");
+                        player.stat.MaxHp = (int)(player.stat.MaxHp - Math.Round(Randvar * 5));
+                        
 
+                        break;
                     default:
                         break;
                 

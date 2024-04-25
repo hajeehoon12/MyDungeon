@@ -25,7 +25,7 @@ namespace MyDungeon
             Console.WriteLine("★[휴식하기]★\n");
             Console.Write($"{price} G 를 내면 체력을 회복할 수 있습니다.");
             Console.Write($"(보유 골드 : {player.stat.Gold} G) \n\n");
-
+            Console.Write($"현재 체력 : {player.stat.Hp}, 최대 체력 : {player.stat.MaxHp}");
             Console.WriteLine("-1. 나가기");
             Console.WriteLine("0. 휴식하기 (잃은 체력의 절반 회복)");
             Console.WriteLine("1. 회복물약 사용 (체력을 최대 50회복) , 회복물약 1개 소모");
@@ -95,6 +95,7 @@ namespace MyDungeon
                                     Console.WriteLine($"{player.inven.ItemInfo[i].ItemName} 을(를) 사용하여 체력을 {player.stat.MaxHp - player.stat.Hp} 만큼 회복했습니다.");
                                     player.stat.Hp = player.stat.MaxHp;
                                 }
+                                Console.Write($"현재 체력 : {player.stat.Hp}, 최대 체력 : {player.stat.MaxHp}");
                                 Camping(player); // 물약 사용후 종료
                             }
                             else
