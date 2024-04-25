@@ -32,6 +32,7 @@ namespace MyDungeon
 
         private void LoadGameData(Player player)
         {
+            Console.WriteLine("\r\n##        #######     ###    ########  \r\n##       ##     ##   ## ##   ##     ## \r\n##       ##     ##  ##   ##  ##     ## \r\n##       ##     ## ##     ## ##     ## \r\n##       ##     ## ######### ##     ## \r\n##       ##     ## ##     ## ##     ## \r\n########  #######  ##     ## ########  \r\n");
             Console.WriteLine("불러올 플레이어명을 입력하세요.\n>>");
             string temp_name = Console.ReadLine();
 
@@ -52,6 +53,7 @@ namespace MyDungeon
 
                 Thread.Sleep(1000);
                 Console.WriteLine($"플레이어명 : {temp_name} 의 게임 데이터를 불러오는데 성공했습니다!!");
+                Console.WriteLine("\r\n ######     ###    ##     ## ######## \r\n##    ##   ## ##   ##     ## ##       \r\n##        ##   ##  ##     ## ##       \r\n ######  ##     ## ##     ## ######   \r\n      ## #########  ##   ##  ##       \r\n##    ## ##     ##   ## ##   ##       \r\n ######  ##     ##    ###    ######## \r\n");
                 SelectAct(player);
 
             }
@@ -135,6 +137,7 @@ namespace MyDungeon
                     LoadGameData(player);
                     break;
                 case 8:
+                    Console.WriteLine("\r\n ######      ###    ##     ## ########    ######## ##    ## ########  \r\n##    ##    ## ##   ###   ### ##          ##       ###   ## ##     ## \r\n##         ##   ##  #### #### ##          ##       ####  ## ##     ## \r\n##   #### ##     ## ## ### ## ######      ######   ## ## ## ##     ## \r\n##    ##  ######### ##     ## ##          ##       ##  #### ##     ## \r\n##    ##  ##     ## ##     ## ##          ##       ##   ### ##     ## \r\n ######   ##     ## ##     ## ########    ######## ##    ## ########  \r\n");
                     Console.WriteLine("\n☆게임 종료를 선택하셨습니다! 2초후에 종료됩니다!!☆");
                     
                     Thread.Sleep(2000);

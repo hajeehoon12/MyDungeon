@@ -20,6 +20,7 @@ namespace MyDungeon
             
         public void Camping(Player player)
         {
+            Console.WriteLine("\r\n ######     ###    ##     ## ########  \r\n##    ##   ## ##   ###   ### ##     ## \r\n##        ##   ##  #### #### ##     ## \r\n##       ##     ## ## ### ## ########  \r\n##       ######### ##     ## ##        \r\n##    ## ##     ## ##     ## ##        \r\n ######  ##     ## ##     ## ##        \r\n");
             Console.WriteLine("\n\n==================================================================================\n");
             Console.WriteLine("★[휴식하기]★\n");
             Console.Write($"{price} G 를 내면 체력을 회복할 수 있습니다.");

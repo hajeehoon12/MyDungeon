@@ -43,8 +43,8 @@ namespace MyDungeon
         public void Show_stat()
         {
 
-            
 
+            Console.WriteLine("\r\n ######  ########    ###    ######## ##     ##  ######  \r\n##    ##    ##      ## ##      ##    ##     ## ##    ## \r\n##          ##     ##   ##     ##    ##     ## ##       \r\n ######     ##    ##     ##    ##    ##     ##  ######  \r\n      ##    ##    #########    ##    ##     ##       ## \r\n##    ##    ##    ##     ##    ##    ##     ## ##    ## \r\n ######     ##    ##     ##    ##     #######   ######  \r\n");
             Console.WriteLine("\n\n캐릭터의 정보가 표시됩니다.\n");
             Console.WriteLine("=================================");
             Console.WriteLine("             [상태창]           \n");
@@ -61,7 +61,7 @@ namespace MyDungeon
         public void Show_stat(int atkinc, int definc)
         {
 
-
+            Console.WriteLine("\r\n ######  ########    ###    ######## ##     ##  ######  \r\n##    ##    ##      ## ##      ##    ##     ## ##    ## \r\n##          ##     ##   ##     ##    ##     ## ##       \r\n ######     ##    ##     ##    ##    ##     ##  ######  \r\n      ##    ##    #########    ##    ##     ##       ## \r\n##    ##    ##    ##     ##    ##    ##     ## ##    ## \r\n ######     ##    ##     ##    ##     #######   ######  \r\n");
 
             Console.WriteLine("\n\n☆캐릭터의 정보가 표시됩니다.☆\n");
             Console.WriteLine("=================================");
