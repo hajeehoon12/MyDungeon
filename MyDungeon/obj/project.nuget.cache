@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "6qi7EiNgByuGJPDoE1coKvODqWZpO7ZlaRKB0Rc0//GcR6u6PeGG50V/ynlZk7Ml2McXpw8a4JWBVac2kpp9gw==",
+  "dgSpecHash": "WejrZCiFyQxoNaPcpJR/lQW4wIIXLl8wAv06KiuXS5G8bYKZkpbKzGo7TqTmbdd1YFdQ7ijYyfENs+JKdkjknw==",
   "success": true,
   "projectFilePath": "C:\\Users\\hajee\\Desktop\\MyDungeon\\MyDungeon\\MyDungeon\\MyDungeon.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\hajee\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
