@@ -12,6 +12,7 @@ namespace MyDungeon
         int act;
         bool actIsNum;
         ItemData tempItem;
+        Program program;
 
         string market_Name = "상점명 초기화전"; // 상점명 초기화 전 Default 값
 
@@ -20,6 +21,7 @@ namespace MyDungeon
 
         public Market(string name) // 초기화값
         {
+            program = new Program();
             // Market_Item 구성 (아이템타입(오른손,왼손,목걸이,방어구,소모품), 개체명, 공격력, 방어력, 금액, 수량(보유여부), 설명)
             market_Name = name;
 
@@ -95,6 +97,7 @@ namespace MyDungeon
                 Console.Write("\n원하시는 행동을 숫자로 입력해주세요.\n");
                 Console.Write(">>");
                 actIsNum = int.TryParse(Console.ReadLine(), out act);
+                Console.Clear();
             } while (!actIsNum);
 
             switch (act)
@@ -166,12 +169,14 @@ namespace MyDungeon
                 Console.Write("\n원하시는 행동을 숫자로 입력해주세요. 아이템 구매를 원하시면 해당 아이템 번호를 입력하세요.\n");
                 Console.Write(">>");
                 actIsNum = int.TryParse(Console.ReadLine(), out act);
+                Console.Clear();
             } while (!actIsNum);
 
             switch (act)
             {
                 case -1: // 바깥 메뉴로 가기
                     Console.WriteLine("\n\n ☆상점을 나갑니다 총총... ☆\n");
+                    program.SelectAct(player);
                     break;
                 default:
 

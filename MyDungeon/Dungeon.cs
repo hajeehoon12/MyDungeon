@@ -117,6 +117,7 @@ namespace MyDungeon
             {
                 Console.Write("\n원하시는 행동을 숫자로 입력해주세요 : ");
                 actIsNum = int.TryParse(Console.ReadLine(), out act);
+                Console.Clear();
             } while (!actIsNum);
 
             if (0 <= act && act <= 3) // 난이도에 맞는 던전 실행

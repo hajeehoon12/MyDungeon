@@ -70,6 +70,7 @@ namespace MyDungeon
                 Console.Write("\n원하시는 행동을 숫자로 입력해주세요.\n");
                 Console.Write(">>");
                 actIsNum = int.TryParse(Console.ReadLine(), out act);
+                Console.Clear();
             } while (!actIsNum);
 
             switch (act)
@@ -130,6 +131,7 @@ namespace MyDungeon
                 Console.Write("\n원하시는 행동을 숫자로 입력해주세요. 장비장착을 원하시면 해당 장비의 번호를 입력하세요. \n");
                 Console.Write(">>");
                 actIsNum = int.TryParse(Console.ReadLine(), out act);
+                Console.Clear();
             } while (!actIsNum);
 
             switch (act)

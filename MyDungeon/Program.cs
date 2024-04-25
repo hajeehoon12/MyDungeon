@@ -97,6 +97,7 @@ namespace MyDungeon
                 Console.WriteLine("\n1. 상태 보기 \n2. 인벤토리 \n3. 상점 \n4. 던전 \n5. 휴식하기 \n6. 저장하기 \n7. 불러오기 \n8. 게임종료");
                 Console.Write("\n★원하시는 행동을 숫자로 입력해주세요★ : ");
                 actIsNum = int.TryParse(Console.ReadLine(), out act);
+                Console.Clear();
             } while (!actIsNum);
 
             switch (act)

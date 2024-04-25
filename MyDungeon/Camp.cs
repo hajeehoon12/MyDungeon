@@ -39,7 +39,9 @@ namespace MyDungeon
 
                 Console.WriteLine("\n원하시는 행동을 숫자로 입력해주세요 : ");
                 Console.Write(">>");
+                
                 actIsNum = int.TryParse(Console.ReadLine(), out act);
+                Console.Clear();
             } while (!actIsNum);
 
 
