@@ -15,7 +15,7 @@ namespace MyDungeon
         string Name { get; set; }
         int act;
         bool actIsNum;
-        
+        Program program = new Program();
        
         public List<ItemData> ItemInfo = new List<ItemData>();
         
@@ -79,9 +79,9 @@ namespace MyDungeon
 
                     break;
                 case -1:
-                    Console.WriteLine("\n\n");
-                    
-                    
+                    program.SelectAct(player); // 메인메뉴로 이동
+
+
                     //아무것도 하지 않고 break 할 경우 SelectAct() 로 돌아감
                     break;
 
@@ -135,7 +135,9 @@ namespace MyDungeon
             switch (act)
             {
                 case -1: //장착 관리
-                    Show_Inven(player); // 장착관리 입성
+                    Show_Inven(player); // 전단계로 돌아감
+
+
 
                     break;
                 default:
