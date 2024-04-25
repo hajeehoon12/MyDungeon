@@ -27,7 +27,7 @@ namespace MyDungeon
             Market_Item.Add(new ItemData(3, "가죽갑옷", 0, 10, 200, 1, "질긴가죽으로 만든 가죽갑옷입니다."));
             Market_Item.Add(new ItemData(1, "튼튼한방패", 5, 10, 300, 1, "가벼운 공격은 막을 것 같은 튼튼한 방패입니다."));
             Market_Item.Add(new ItemData(2, "세련된목걸이", 3, 3, 1000, 1, "세공이 잘 된 목걸이입니다."));
-            Market_Item.Add(new ItemData(4, "중형회복물약", 4, 0, 1000, 5, "사용자의 가벼운 상처를 순식간에 치료합니다."));
+            Market_Item.Add(new ItemData(4, "중형회복물약", 4, 0, 1000, 99, "사용자의 가벼운 상처를 순식간에 치료합니다."));
 
         }
 
