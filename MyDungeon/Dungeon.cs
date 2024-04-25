@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 namespace MyDungeon
 {
     public enum leveldun {쉬움 = 0, 보통 = 1, 어려움 = 2, 지옥 = 3};
+    
     public class Dungeon
     {
+        Program forsave;
         Camp camp = new Camp();
         int probability = 0;
 
@@ -19,10 +21,13 @@ namespace MyDungeon
 
         public Dungeon()
         {
-            dungeons.Add(new DungeonData(0, 10, 1000, 0)); // Easy
-            dungeons.Add(new DungeonData(1, 15, 1700, 0)); // Normal
-            dungeons.Add(new DungeonData(2, 20, 2500, 0)); // Hard
-            dungeons.Add(new DungeonData(3, 30, 5000, 0)); // Hell
+            forsave = new Program(); // 게임 클리어 시 저장용
+
+
+            dungeons.Add(new DungeonData(0, 15, 1000, 0)); // Easy
+            dungeons.Add(new DungeonData(1, 30, 1700, 0)); // Normal
+            dungeons.Add(new DungeonData(2, 40, 2500, 0)); // Hard
+            dungeons.Add(new DungeonData(3, 60, 5000, 0)); // Hell
 
         }
 
@@ -142,11 +147,32 @@ namespace MyDungeon
 
             if (IsDungeonClear(player, level)) // 던전 성공 검사 후 성공시
             {
+                if (level == 3) // 지옥 난이도 클리어 시 , 게임 클리어 및 저장 , 그리고 이어서 게임함
+                {
+                    Console.WriteLine("지옥 난이도의 던전을 클리어하여 게임을 클리어 했습니다! 축하드립니다!");
+                    Console.WriteLine("\n\n\n\n");
+                    Console.WriteLine("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
+                    Console.WriteLine("\r\n _____                                    _           _         _    _                    \r\n/  __ \\                                  | |         | |       | |  (_)                   \r\n| /  \\/  ___   _ __    __ _  _ __   __ _ | |_  _   _ | |  __ _ | |_  _   ___   _ __   ___ \r\n| |     / _ \\ | '_ \\  / _` || '__| / _` || __|| | | || | / _` || __|| | / _ \\ | '_ \\ / __|\r\n| \\__/\\| (_) || | | || (_| || |   | (_| || |_ | |_| || || (_| || |_ | || (_) || | | |\\__ \\\r\n \\____/ \\___/ |_| |_| \\__, ||_|    \\__,_| \\__| \\__,_||_| \\__,_| \\__||_| \\___/ |_| |_||___/\r\n                       __/ |                                                              \r\n                      |___/                                                               \r\n");
+                    Console.WriteLine("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
+
+                    Console.WriteLine("해당 기록은 자동으로 저장되고 게임을 이어합니다.");
+
+                    forsave.SavePlayerInfo(player);
+
+                    Thread.Sleep(5000);
+
+                    forsave.SelectAct(player);
+
+                }
+
+
+
+
+
                 defgap = player.stat.Defense - dungeons[level].defenseRate; // 플레이어 방어력 - 던전 적정 방어력 계산
 
-
+                Console.WriteLine("★★★★★★★★★★★★★★★★★★★★★★★★★");
                 Console.WriteLine($"축하합니다!! \n{(leveldun)level}던전을 클리어 하였습니다.");
-
                 Console.WriteLine("\n[탐험 결과]");
                 Console.WriteLine($"\n체력 {player.stat.Hp} -> {player.stat.Hp - num - defgap}");
                 Console.WriteLine($"Gold {player.stat.Gold} -> {player.stat.Gold + dungeons[level].reward * (1 + num2 * 0.02)} G");
@@ -159,6 +185,7 @@ namespace MyDungeon
                 player.stat.isLevelUp();
 
                 Console.WriteLine($"레벨업까지 남은 경험치 : {player.stat.Level - player.stat.Exp}");
+                Console.WriteLine("★★★★★★★★★★★★★★★★★★★★★★★★★");
             }
             else // 던전 클리어 실패 시
             {
@@ -174,11 +201,11 @@ namespace MyDungeon
                     case 1: // 체력 절반 , 체력 소진
 
                         Double decrate = Math.Round(100.0d * (1.0d - (0.5d * Randvar)));
-                        Console.WriteLine("=================================");
+                        Console.WriteLine("★★★★★★★★★★★★★★★★★★★★★★★★★");
                         Console.WriteLine("[탐험 결과]");
                         Console.WriteLine($"{player.Name} 이(가) 도주하는데 온힘을 쏟아 체력이 {Math.Round(decrate)} % 만큼 감소 되었습니다.");
                         Console.WriteLine($"\n체력 {player.stat.Hp}->{(int)(player.stat.Hp * (0.5 * Randvar))}");
-                        Console.WriteLine("=================================");
+                        Console.WriteLine("★★★★★★★★★★★★★★★★★★★★★★★★★");
                         player.stat.Hp = (int)(player.stat.Hp * (0.5 * Randvar));
 
                         break;
@@ -210,15 +237,6 @@ namespace MyDungeon
                 
                 }
 
-                if (num3 == 0)
-                {
-                    
-                }
-
-
-
-
-                
             }
 
             if (player.stat.Hp <= 0) // 던전을 마치고 체력이 모두 소진되었을 때 메세지 출력

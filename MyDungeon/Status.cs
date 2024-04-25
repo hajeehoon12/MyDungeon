@@ -33,9 +33,9 @@ namespace MyDungeon
             Name = name;
             Level = 1;
             Attack = 10;
-            Defense = 7;
+            Defense = 8;
             Hp = 100;
-            Gold = 5000;
+            Gold = 1000;
             Exp = 0;
             MaxHp = 100;
         }

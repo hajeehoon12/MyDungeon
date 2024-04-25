@@ -23,11 +23,19 @@ namespace MyDungeon
             // Market_Item 구성 (아이템타입(오른손,왼손,목걸이,방어구,소모품), 개체명, 공격력, 방어력, 금액, 수량(보유여부), 설명)
             market_Name = name;
 
-            Market_Item.Add(new ItemData(0, "철검", 30, 0, 500, 1, "철로 만든 검입니다."));
-            Market_Item.Add(new ItemData(3, "가죽갑옷", 0, 10, 200, 1, "질긴가죽으로 만든 가죽갑옷입니다."));
-            Market_Item.Add(new ItemData(1, "튼튼한방패", 5, 10, 300, 1, "가벼운 공격은 막을 것 같은 튼튼한 방패입니다."));
-            Market_Item.Add(new ItemData(2, "세련된목걸이", 3, 3, 1000, 1, "세공이 잘 된 목걸이입니다."));
-            Market_Item.Add(new ItemData(4, "중형회복물약", 4, 0, 1000, 99, "사용자의 가벼운 상처를 순식간에 치료합니다."));
+            Market_Item.Add(new ItemData(0, "철검", 20, 0, 5000, 1, "철로 만든 검"));
+            Market_Item.Add(new ItemData(3, "가죽갑옷", 0, 10, 2000, 1, "질긴가죽으로 만든 가죽갑옷"));
+            Market_Item.Add(new ItemData(1, "튼튼한방패", 5, 10, 3000, 1, "가벼운 공격은 막을 것 같은 튼튼한 방패"));
+            Market_Item.Add(new ItemData(2, "세련된목걸이", 3, 3, 10000, 1, "세공이 잘 된 목걸이"));
+
+            Market_Item.Add(new ItemData(0, "강철검", 30, 0, 10000, 1, "무겁지만 무엇이라도 베어버릴것 같은 날카로운 검"));
+            Market_Item.Add(new ItemData(3, "강철 갑옷", 0, 20, 7000, 1, "왠만한 공격은 다 막아낼 것 같은 강철로 만든 갑옷"));
+            Market_Item.Add(new ItemData(1, "강철 방패", 10, 10, 5000, 1, "무겁지만 제성능을 톡톡히 해내는 강철로 만든 방패"));
+            Market_Item.Add(new ItemData(2, "화려한목걸이", 15, 15, 30000, 1, "사용자에게 미지의 힘을 화려한 목걸이"));
+
+            Market_Item.Add(new ItemData(4, "회복물약", 4, 0, 1000, 99, "사용자의 상처를 치유하고 활력이 돋게 하는 물약"));
+
+            
 
         }
 
@@ -180,6 +188,11 @@ namespace MyDungeon
                         {
                             Console.WriteLine("☆매진된 아이템입니다.☆");
                         }
+                        else if (player.stat.Gold < Market_Item[act].ItemPrice) // 골드 부족
+                        {
+                            Console.WriteLine("☆Gold 가 부족합니다.☆");
+                            Market_Purchase_Menu(player);
+                        }
                         else if (player.stat.Gold >= Market_Item[act].ItemPrice || Market_Item[act].Amount > 0) // 정상구매
                         {
                             player.stat.Gold -= Market_Item[act].ItemPrice;
@@ -187,13 +200,7 @@ namespace MyDungeon
                             Market_Item[act].Amount -= 1;
                             tempItem = DeepCopy(act);
                             player.ItemAmount_Change(tempItem, 1); // 사는 아이템 정보, 갯수
-
-                        }
-                        else if (player.stat.Gold < Market_Item[act].ItemPrice) // 골드 부족
-                        {
-                            Console.WriteLine("☆Gold 가 부족합니다.☆");
-                            Market_Purchase_Menu(player);
-                        }
+                        }                 
                         else
                         {
                             Console.WriteLine("☆불길한 오류입니다.☆");  // 알 수 없는 오류

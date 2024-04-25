@@ -26,7 +26,9 @@ namespace MyDungeon
             Console.Write($"(보유 골드 : {player.stat.Gold} G) \n\n");
 
             Console.WriteLine("-1. 나가기");
-            Console.WriteLine("0. 휴식하기");
+            Console.WriteLine("0. 휴식하기 (잃은 체력의 절반 회복)");
+            Console.WriteLine("1. 회복물약 사용 (체력을 최대 50회복) , 회복물약 1개 소모");
+            
             
 
 
@@ -69,7 +71,42 @@ namespace MyDungeon
                     }
             
                     break;
-               
+                case 1: // 물약 사용
+
+                    for (int i = 0; i < player.inven.ItemInfo.Count; i++)
+                    {
+                        if (player.inven.ItemInfo[i].ItemType == 4)
+                        {
+                            if (player.inven.ItemInfo[i].Amount >= 1)
+                            {
+                                Console.WriteLine($"{player.Name} 이(가) 현재 {player.inven.ItemInfo[i].ItemName} 을(를) {player.inven.ItemInfo[i].Amount} 개 소지하고 있습니다. 1개를 소비합니다.");
+                                player.inven.ItemInfo[i].Amount -= 1;
+
+                                if (player.stat.Hp + 50 < player.stat.MaxHp)
+                                {
+                                    Console.WriteLine($"{player.inven.ItemInfo[i].ItemName} 을(를) 사용하여 체력을 50 만큼 회복했습니다.");
+                                    player.stat.Hp += 50;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"{player.inven.ItemInfo[i].ItemName} 을(를) 사용하여 체력을 {player.stat.MaxHp - player.stat.Hp} 만큼 회복했습니다.");
+                                    player.stat.Hp = player.stat.MaxHp;
+                                }
+                                Camping(player); // 물약 사용후 종료
+                            }
+                            else
+                            {
+                                Console.WriteLine($"현재 인벤토리에 {player.inven.ItemInfo[i].ItemName} 이(가) 모자랍니다. {player.inven.ItemInfo[i].ItemName} 사용이 취소됩니다.");
+                            }
+                        }
+                        
+                    }
+                    Console.WriteLine($"현재 인벤토리에 회복물약 이(가) 없습니다. 회복물약 사용이 취소됩니다.");
+
+
+                    Console.WriteLine("\n\n==================================================================================\n");
+                    
+                    break;
                 
                 default:
                     Console.WriteLine("\n====잘못된 입력입니다. 다시 입력해주세요====");

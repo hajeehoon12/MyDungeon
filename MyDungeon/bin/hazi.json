@@ -1,0 +1,68 @@
+{
+  "Name": "hazi",
+  "stat": {
+    "Level": 1,
+    "Attack": 10.0,
+    "Defense": 8,
+    "Hp": 93,
+    "Gold": 1000.0,
+    "MaxHp": 100,
+    "Exp": 0,
+    "AttackInc": 0,
+    "DefInc": 0
+  },
+  "inven": {
+    "ItemInfo": [
+      {
+        "ItemType": 0,
+        "IsEquip": false,
+        "ItemName": "        목검        ",
+        "ItemAtk": 5,
+        "ItemDef": 0,
+        "ItemExp": "나무로 만든 조잡한 검",
+        "Amount": 1,
+        "ItemPrice": 500
+      },
+      {
+        "ItemType": 3,
+        "IsEquip": false,
+        "ItemName": "      천갑옷        ",
+        "ItemAtk": 0,
+        "ItemDef": 5,
+        "ItemExp": "방어기능이라고는 없는 천으로 만든 옷",
+        "Amount": 1,
+        "ItemPrice": 100
+      },
+      {
+        "ItemType": 1,
+        "IsEquip": false,
+        "ItemName": "      나무방패      ",
+        "ItemAtk": 2,
+        "ItemDef": 2,
+        "ItemExp": "주먹질 정도나 막을 것 같은 낡은 나무 방패.",
+        "Amount": 1,
+        "ItemPrice": 300
+      },
+      {
+        "ItemType": 2,
+        "IsEquip": false,
+        "ItemName": "    낡은목걸이      ",
+        "ItemAtk": 1,
+        "ItemDef": 1,
+        "ItemExp": "툭 치면 부러질 것 같은 싸구려 목걸이",
+        "Amount": 1,
+        "ItemPrice": 1000
+      },
+      {
+        "ItemType": 4,
+        "IsEquip": false,
+        "ItemName": "      회복물약      ",
+        "ItemAtk": 4,
+        "ItemDef": 0,
+        "ItemExp": "사용자의 상처를 치유하고 활력이 돋게 하는 물약",
+        "Amount": 3,
+        "ItemPrice": 1000
+      }
+    ]
+  }
+}

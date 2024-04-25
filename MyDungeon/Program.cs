@@ -10,7 +10,7 @@ namespace MyDungeon
     public class Program
     {
 
-        private void SavePlayerInfo(Player player) // 현재 플레이어 데이터 저장
+        public void SavePlayerInfo(Player player) // 현재 플레이어 데이터 저장
         {
             string _fileName = player.Name+".json"; // 저장할 파일명 지정
             //string _itemFileName = "itemData.json"; // 이후 추가 직렬화 할 데이터가 있으면 쓸 양식
@@ -26,6 +26,7 @@ namespace MyDungeon
             
             Console.WriteLine("저장이 완료되었습니다.");
             Console.WriteLine($"플레이어의 정보가 해당 경로로 지정되었습니다. :{_filePath}");
+            Console.WriteLine("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
 
         }
 
@@ -50,14 +51,15 @@ namespace MyDungeon
                 Console.WriteLine($"{temp_name} 의 게임 데이터를 불러옵니다."); // 저장된 플레이어 데이터의 플레이어명
 
                 Thread.Sleep(1000);
-
+                Console.WriteLine($"플레이어명 : {temp_name} 의 게임 데이터를 불러오는데 성공했습니다!!");
                 SelectAct(player);
 
             }
             else
             {
                 Console.WriteLine("\n☆해당 플레이어명으로 저장된 게임이 없습니다! 메인 메뉴로 돌아갑니다!☆");
-                
+                Console.WriteLine("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
+
                 Thread.Sleep(1000);
 
                 SelectAct(player);
@@ -162,7 +164,7 @@ namespace MyDungeon
 
         static void Main()
         {
-            
+            Console.SetWindowSize(120, 35); // 콘솔창 크기 조절
 
             string playerName;
 

@@ -26,11 +26,11 @@ namespace MyDungeon
             // ItemInfo 구성 (장비 타입(오른손,왼손,목걸이,방어구,소모품), 개체명, 공격력, 방어력, 금액, 수량(보유여부), 설명)
             Name = name;
             
-            ItemInfo.Add(new ItemData(0, "목검", 10, 0, 50, 1, "나무로 만든 조잡한 검입니다."));
-            ItemInfo.Add(new ItemData(3, "천갑옷", 0, 3, 10, 1, "방어기능이라고는 없는 천으로 만든 옷입니다."));
-            ItemInfo.Add(new ItemData(1, "나무방패", 3, 5, 30, 1, "주먹질 정도는 막을 수 있을 것 같은 낡은 나무 방패입니다."));
-            ItemInfo.Add(new ItemData(2, "낡은목걸이", 1, 1, 100, 1, "툭 치면 부러질 듯한 목걸이입니다."));
-            ItemInfo.Add(new ItemData(4, "소형회복물약", 4, 0, 100, 3, "사용자의 활력을 돋게 해줄 물약입니다."));
+            ItemInfo.Add(new ItemData(0, "목검", 5, 0, 500, 1, "나무로 만든 조잡한 검"));
+            ItemInfo.Add(new ItemData(3, "천갑옷", 0, 5, 100, 1, "방어기능이라고는 없는 천으로 만든 옷"));
+            ItemInfo.Add(new ItemData(1, "나무방패", 2, 2, 300, 1, "주먹질 정도나 막을 것 같은 낡은 나무 방패."));
+            ItemInfo.Add(new ItemData(2, "낡은목걸이", 1, 1, 1000, 1, "툭 치면 부러질 것 같은 싸구려 목걸이"));
+            ItemInfo.Add(new ItemData(4, "회복물약", 4, 0, 1000, 3, "사용자의 상처를 치유하고 활력이 돋게 하는 물약"));
 
         }
         public void Show_Inven(Player player) // 인벤토리 표시
