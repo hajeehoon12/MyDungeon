@@ -31,14 +31,14 @@ namespace MyDungeon
 
         private void LoadGameData(Player player)
         {
-            string _fileName = "playerStat.json";
+            string _fileName = "playerInfo.json";
 
             string _userGameFolder = System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName;
 
-            Console.WriteLine($"데이터를 찾는 폴더 명 : {System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName}");
+            
 
             string _filePath = Path.Combine(_userGameFolder, _fileName); // 저장된 파일의 예상 경로
-
+            Console.WriteLine($"데이터를 찾는 폴더 명 : {_filePath}");
             if (File.Exists(_filePath)) // 해당 경로에 저장된 것이 있었으면
             {
                 string _playerJson = File.ReadAllText(_filePath);

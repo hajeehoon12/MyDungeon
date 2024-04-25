@@ -20,7 +20,7 @@ namespace MyDungeon
         public ItemData(int _itemType, string _itemName, int _itemAtk, int _itemDef,  int _itemPrice, int _Amount, string _itemExp)
         {
             ItemType = _itemType;
-            ItemName = FormatAndPad(_itemName, 8);// 8글자로 고정 패딩실시
+            ItemName = FormatAndPad(_itemName, 10 );// 8글자로 고정 패딩실시
             ItemAtk = _itemAtk;
             ItemDef = _itemDef;
             ItemExp = _itemExp;
@@ -31,7 +31,11 @@ namespace MyDungeon
 
         static string FormatAndPad(string _text, int _width)
         {
-            int _remainingSpace = _width - _text.Length;
+            int _remainingSpace = 0;
+            if (_text != null)
+            {
+                _remainingSpace = _width - _text.Length;
+            }
             if (_remainingSpace <= 0)
             {
                 return _text;
