@@ -18,8 +18,12 @@ namespace MyDungeon
         public int Hp { get; set; }
         public float Gold { get; set; }
 
+        public int MaxHp { get; set; }
+
         public int Exp { get; set; }
 
+        public int AttackInc { get; set; }
+        public int DefInc { get; set; }
 
 
         string job = "전사";
@@ -29,10 +33,11 @@ namespace MyDungeon
             Name = name;
             Level = 1;
             Attack = 10;
-            Defense = 5;
-            Hp = 50;
+            Defense = 7;
+            Hp = 100;
             Gold = 5000;
             Exp = 0;
+            MaxHp = 100;
         }
 
         public void Show_stat()
@@ -47,7 +52,7 @@ namespace MyDungeon
             Console.WriteLine($"{Name} ({job})");
             Console.WriteLine($"공격력 : {Attack}");
             Console.WriteLine($"방어력 : {Defense}");
-            Console.WriteLine($"체 력 : {Hp}");
+            Console.WriteLine($"체 력 : {Hp} / {MaxHp}");
             Console.WriteLine($"Gold : {Gold}");
             Console.WriteLine("=================================\n\n");
 
@@ -63,6 +68,9 @@ namespace MyDungeon
             Console.WriteLine("             [상태창]           \n");
             Console.WriteLine($"Lv. {Level}");
             Console.WriteLine($"{Name} ({job})");
+
+            DefInc = definc;
+            AttackInc = atkinc;
 
             if (atkinc != 0)
             {
@@ -122,6 +130,7 @@ namespace MyDungeon
                 Defense += 1;
                 Level += 1;
                 Exp = 0;
+                MaxHp += 20;
             }
         }
 

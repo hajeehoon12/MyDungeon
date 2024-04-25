@@ -43,21 +43,22 @@ namespace MyDungeon
 
             switch (act)
             {
-                case -1: // 나가기         
+                case -1: // 나가기
+                    program.SelectAct(player);
                     break;
                 case 0: // 휴식하기
 
                     if (player.stat.Gold >= 500)
                     {
                         Console.WriteLine("\n\n==================================================================================\n");
-                        Console.WriteLine($"{price} G 를 내고 휴식을 진행합니다.");
+                        Console.WriteLine($"{price} G 를 내고 휴식을 진행합니다. : 잃은 체력의 절반 회복");
                         Console.WriteLine("\n[휴식 결과]\n");
                         Console.WriteLine($"체력 {player.stat.Hp} -> 100");
                         Console.WriteLine($"Gold {player.stat.Gold} G-> {player.stat.Gold - price} ");
-                        player.stat.Hp = 100;
+                        player.stat.Hp += (player.stat.MaxHp-player.stat.Hp)/2;
                         player.stat.Gold -= 500;
                         Console.WriteLine("\n\n==================================================================================\n");
-                        program.SelectAct(player);
+                        Camping(player);
                         
                     }
                     else

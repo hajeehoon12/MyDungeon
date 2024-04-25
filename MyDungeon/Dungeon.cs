@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,41 +12,86 @@ namespace MyDungeon
     public class Dungeon
     {
         Camp camp = new Camp();
-        
+        int probability = 0;
 
 
         public List<DungeonData> dungeons = new List<DungeonData>();
 
         public Dungeon()
         {
-            dungeons.Add(new DungeonData(0, 10, 1000)); // Easy
-            dungeons.Add(new DungeonData(1, 15, 1700)); // Hard
-            dungeons.Add(new DungeonData(2, 20, 2500)); // Hell
+            dungeons.Add(new DungeonData(0, 10, 1000, 0)); // Easy
+            dungeons.Add(new DungeonData(1, 15, 1700, 0)); // Hard
+            dungeons.Add(new DungeonData(2, 20, 2500, 0)); // Hell
 
         }
+
+        public (int ,int) PlayerEquipMent(Player player)
+        {
+             int atk = 0;
+             int def = 0;
+
+             for (int i = 0; i < player.inven.ItemInfo.Count; i++) // 인벤토리 표시
+             {
+                 if (player.inven.ItemInfo[i].IsEquip == true)
+                 {
+                    atk += player.inven.ItemInfo[i].ItemAtk;
+                    def += player.inven.ItemInfo[i].ItemDef;
+                 }
+             }
+             return (atk, def);
+        }
+        
 
         public void Dungeon_Menu(Player player)
         {
 
             int act; //메뉴
             bool actIsNum;
+            var leveling = Enum.GetValues(typeof(leveldun));
+
+            (int atk_inc, int def_inc)= PlayerEquipMent(player);
 
             Console.WriteLine("\n=================================================================================");
             Console.WriteLine("★던전입장★\n");
             Console.WriteLine("이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n");
-            Console.WriteLine($"현재 당신의 체력: {player.stat.Hp}");
+            Console.WriteLine($"현재 당신의 체력: {player.stat.Hp} / {player.stat.MaxHp}");
             Console.WriteLine($"현재 당신의 자금: {player.stat.Gold}");
-            Console.WriteLine($"현재 당신의 레벨: {player.stat.Level} , 공격력: {player.stat.Attack} , 방어력: {player.stat.Defense}");
+            Console.WriteLine($"현재 당신의 레벨: {player.stat.Level} , 공격력: {player.stat.Attack} +({atk_inc}) , 방어력: {player.stat.Defense} + ({def_inc})");
             Console.WriteLine($"레벨업까지 남은 경험치 : {player.stat.Level - player.stat.Exp}");
 
             Console.WriteLine("\n\n-1. 나가기");
 
-            var leveling = Enum.GetValues(typeof(leveldun));
+            
 
-            foreach (var value in leveling)
+            for (int i = 0; i < dungeons.Count; i++) // 던전 성공확률 계산
             {
 
-                Console.Write($"{(int)value}. {(leveldun)value} 던전  | 방어력 {dungeons[(int)value].defenseRate} 이상 권장 | 평균 보상 금액 : {dungeons[(int)value].reward}\n");
+                float pd = player.stat.Defense + def_inc;    // 플레이어 방어력
+                float dd = dungeons[i].defenseRate; // 던전 적정 방어력
+
+                
+
+                if (pd >= (dd * 2))
+                {
+                    dungeons[i].probability = 100;
+                }
+                else if (pd*2 <= dd)
+                {
+                    dungeons[i].probability = 0;
+                }
+                else
+                {
+                    dungeons[i].probability =(int)( (pd / dd) * 50.0f );
+                    
+                }
+                
+            }
+
+            foreach (var value in leveling)
+            { 
+
+                Console.Write($"{(int)value}. {(leveldun)value} 던전  | 방어력 {dungeons[(int)value].defenseRate} 이상 권장 " +
+                    $"| 평균 보상 금액 : {dungeons[(int)value].reward} | 탐사 성공 확률 : {dungeons[(int)value].probability} % \n");
             }
 
 
@@ -149,21 +195,15 @@ namespace MyDungeon
             Random rand = new Random();
             int num = rand.Next(0, 101);
 
-            if (player.stat.Defense < dungeons[level].defenseRate) // 낮으면 40% 확률로 실패
-            {
-                if (num < 40)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            else
+            if (num < dungeons[level].probability)
             {
                 return true;
             }
+            else
+            {
+                return false;
+            }
+        
         }
 
 

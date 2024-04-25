@@ -12,7 +12,7 @@ namespace MyDungeon
 
         private void SavePlayerInfo(Player player) // 현재 플레이어 데이터 저장
         {
-            string _fileName = "playerInfo.json"; // 저장할 파일명 지정
+            string _fileName = player.Name+".json"; // 저장할 파일명 지정
             //string _itemFileName = "itemData.json"; // 이후 추가 직렬화 할 데이터가 있으면 쓸 양식
 
             string _userGameFolder = System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName;
@@ -31,7 +31,11 @@ namespace MyDungeon
 
         private void LoadGameData(Player player)
         {
-            string _fileName = "playerInfo.json";
+            Console.WriteLine("불러올 플레이어명을 입력하세요.\n>>");
+            string temp_name = Console.ReadLine();
+
+
+            string _fileName = temp_name + ".json";
 
             string _userGameFolder = System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName;
 
@@ -43,7 +47,7 @@ namespace MyDungeon
             {
                 string _playerJson = File.ReadAllText(_filePath);
                 player = JsonConvert.DeserializeObject<Player>(_playerJson);
-                Console.WriteLine($"{player.Name} 의 게임 데이터를 불러옵니다."); // 저장된 플레이어 데이터의 플레이어명
+                Console.WriteLine($"{temp_name} 의 게임 데이터를 불러옵니다."); // 저장된 플레이어 데이터의 플레이어명
 
                 Thread.Sleep(1000);
 
@@ -52,7 +56,7 @@ namespace MyDungeon
             }
             else
             {
-                Console.WriteLine("\n☆저장된 게임이 없습니다. 메인 메뉴로 돌아갑니다!☆");
+                Console.WriteLine("\n☆해당 플레이어명으로 저장된 게임이 없습니다! 메인 메뉴로 돌아갑니다!☆");
                 
                 Thread.Sleep(1000);
 
@@ -89,7 +93,7 @@ namespace MyDungeon
                 "\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.");
 
                 Console.WriteLine("\n1. 상태 보기 \n2. 인벤토리 \n3. 상점 \n4. 던전 \n5. 휴식하기 \n6. 저장하기 \n7. 불러오기 \n8. 게임종료");
-                Console.Write("\n원하시는 행동을 숫자로 입력해주세요 : ");
+                Console.Write("\n★원하시는 행동을 숫자로 입력해주세요★ : ");
                 actIsNum = int.TryParse(Console.ReadLine(), out act);
             } while (!actIsNum);
 
