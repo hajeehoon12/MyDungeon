@@ -61,6 +61,11 @@ namespace MyDungeon
                     Console.WriteLine("\n☆휴식이 선택되었습니다.☆");
                     player.DoCamping(player);
                     break;
+                case 6:
+                    Console.WriteLine();
+                    // 저장하기 코드 입력할것
+                    SelectAct(player); // 저장하고 메인메뉴로 다시
+                    break;
 
                 default:
                     Console.WriteLine("\n☆====잘못된 입력입니다. 다시 입력해주세요====☆");
