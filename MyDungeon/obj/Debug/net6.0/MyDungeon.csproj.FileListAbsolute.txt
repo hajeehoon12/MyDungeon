@@ -27,3 +27,6 @@ C:\Users\hajee\Desktop\MyDungeon\MyDungeon\MyDungeon\obj\Debug\net6.0\refint\MyD
 C:\Users\hajee\Desktop\MyDungeon\MyDungeon\MyDungeon\obj\Debug\net6.0\MyDungeon.pdb
 C:\Users\hajee\Desktop\MyDungeon\MyDungeon\MyDungeon\obj\Debug\net6.0\MyDungeon.genruntimeconfig.cache
 C:\Users\hajee\Desktop\MyDungeon\MyDungeon\MyDungeon\obj\Debug\net6.0\ref\MyDungeon.dll
+C:\Users\hajee\Desktop\MyDungeon\MyDungeon\MyDungeon\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\hajee\Desktop\MyDungeon\MyDungeon\MyDungeon\obj\Debug\net6.0\MyDungeon.csproj.AssemblyReference.cache
+C:\Users\hajee\Desktop\MyDungeon\MyDungeon\MyDungeon\obj\Debug\net6.0\MyDungeon.csproj.CopyComplete

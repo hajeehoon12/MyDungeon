@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyDungeon
 {
-    public class Player
+    [Serializable]public class Player
     {
         public string Name; // 이름 저장용
         public Status stat; // 상태창 저장용
@@ -33,6 +33,8 @@ namespace MyDungeon
             stat.Show_stat(); // 생성할 때, 캐릭터 정보를 출력
 
         }
+
+        
 
         public void CharInfo() // 캐릭터 상태창 정보
         {

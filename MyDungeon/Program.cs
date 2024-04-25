@@ -1,13 +1,68 @@
 ﻿using System.Numerics;
 using System.Threading;
+using Newtonsoft.Json;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 namespace MyDungeon
 {
+    
     public class Program
     {
-        
-        
-        
+
+        private void SavePlayerInfo(Player player) // 현재 플레이어 데이터 저장
+        {
+            string _fileName = "playerInfo.json"; // 저장할 파일명 지정
+            //string _itemFileName = "itemData.json"; // 이후 추가 직렬화 할 데이터가 있으면 쓸 양식
+
+            string _userGameFolder = System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName;
+            Console.WriteLine($"저장될 폴더 명 : {System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName}");
+            string _filePath = Path.Combine(_userGameFolder, _fileName);
+            //string _itemFilePath = Path.Combine(_userGameFolder, _itemFileName);
+
+            string _playerJson = JsonConvert.SerializeObject(player, Formatting.Indented);
+            
+            File.WriteAllText(_filePath, _playerJson);
+            
+            Console.WriteLine("저장이 완료되었습니다.");
+            Console.WriteLine($"플레이어의 정보가 해당 경로로 지정되었습니다. :{_filePath}");
+
+        }
+
+        private void LoadGameData(Player player)
+        {
+            string _fileName = "playerStat.json";
+
+            string _userGameFolder = System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName;
+
+            Console.WriteLine($"데이터를 찾는 폴더 명 : {System.IO.Directory.GetParent(System.Environment.CurrentDirectory).Parent.FullName}");
+
+            string _filePath = Path.Combine(_userGameFolder, _fileName); // 저장된 파일의 예상 경로
+
+            if (File.Exists(_filePath)) // 해당 경로에 저장된 것이 있었으면
+            {
+                string _playerJson = File.ReadAllText(_filePath);
+                player = JsonConvert.DeserializeObject<Player>(_playerJson);
+                Console.WriteLine($"{player.Name} 의 게임 데이터를 불러옵니다."); // 저장된 플레이어 데이터의 플레이어명
+
+                Thread.Sleep(1000);
+
+                SelectAct(player);
+
+            }
+            else
+            {
+                Console.WriteLine("\n☆저장된 게임이 없습니다. 메인 메뉴로 돌아갑니다!☆");
+                
+                Thread.Sleep(1000);
+
+                SelectAct(player);
+            }
+
+            
+        }
+
+
         public void SelectAct(Player player) // 메뉴 선택
         {
            
@@ -32,7 +87,7 @@ namespace MyDungeon
                 Console.WriteLine($"탐험가 ★{player.Name}★님 REDSTAR 마을에 오신 여러분 환영합니다!!" +
                 "\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.");
 
-                Console.WriteLine("\n1. 상태 보기 \n2. 인벤토리 \n3. 상점 \n4. 던전 \n5. 휴식하기 \n6. 저장하기 \n7. 게임종료");
+                Console.WriteLine("\n1. 상태 보기 \n2. 인벤토리 \n3. 상점 \n4. 던전 \n5. 휴식하기 \n6. 저장하기 \n7. 불러오기 \n8. 게임종료");
                 Console.Write("\n원하시는 행동을 숫자로 입력해주세요 : ");
                 actIsNum = int.TryParse(Console.ReadLine(), out act);
             } while (!actIsNum);
@@ -65,9 +120,13 @@ namespace MyDungeon
                 case 6:
                     Console.WriteLine("\n☆저장이 선택되었습니다.☆");
                     // 저장하기 코드 입력할것
+                    SavePlayerInfo(player);
                     SelectAct(player); // 저장하고 메인메뉴로 다시
                     break;
                 case 7:
+                    LoadGameData(player);
+                    break;
+                case 8:
                     Console.WriteLine("\n☆게임 종료를 선택하셨습니다! 2초안에 아무 입력이 없으면 종료됩니다!!☆");
                     int tempEnd = -999;
                     bool tempNum = int.TryParse(Console.ReadLine(), out tempEnd);
