@@ -14,8 +14,8 @@ namespace MyDungeon
         Dungeon dungeon;
         Camp camp;
         Program program;
-
         public Inventory inven; // 플레이어 인벤토리
+
         int atkinc = 0;
         int definc = 0;
 

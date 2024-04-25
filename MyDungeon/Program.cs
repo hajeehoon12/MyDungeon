@@ -83,6 +83,7 @@ namespace MyDungeon
                                   " #    #  #       #     # #     #    #    #     # #     #  \r\n" +
                                   "#     # ####### ######   #####     #    #     # #      # \r\n\n"); // 아스키아트
 
+                
 
                 Console.WriteLine($"탐험가 ★{player.Name}★님 REDSTAR 마을에 오신 여러분 환영합니다!!" +
                 "\n이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.");
@@ -127,18 +128,18 @@ namespace MyDungeon
                     LoadGameData(player);
                     break;
                 case 8:
-                    Console.WriteLine("\n☆게임 종료를 선택하셨습니다! 2초안에 아무 입력이 없으면 종료됩니다!!☆");
-                    int tempEnd = -999;
-                    bool tempNum = int.TryParse(Console.ReadLine(), out tempEnd);
+                    Console.WriteLine("\n☆게임 종료를 선택하셨습니다! 2초후에 종료됩니다!!☆");
+                    
                     Thread.Sleep(2000);
-                    if (tempEnd == -999)
-                    {
-                        Environment.Exit(0); // 게임 종료
-                    }
-                    else
+                    if (false) // 게임 종료 취소 조건 넣을 예정
                     {
                         Console.WriteLine("\n☆게임 종료를 취소했습니다!☆"); // 취소 후 메인화면으로 복귀
                         SelectAct(player);
+                        
+                    }
+                    else
+                    {
+                        Environment.Exit(0); // 게임 종료
                     }
                     
                     break;

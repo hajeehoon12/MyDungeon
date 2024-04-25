@@ -1,12 +1,12 @@
 {
   "Name": "hazi",
   "stat": {
-    "Level": 1,
-    "Attack": 10.0,
-    "Defense": 5,
-    "Hp": 50,
-    "Gold": 5000.0,
-    "Exp": 0
+    "Level": 2,
+    "Attack": 10.5,
+    "Defense": 6,
+    "Hp": 100,
+    "Gold": 4500.0,
+    "Exp": 1
   },
   "inven": {
     "ItemInfo": [
@@ -59,6 +59,46 @@
         "ItemExp": "사용자의 활력을 돋게 해줄 물약입니다.",
         "Amount": 3,
         "ItemPrice": 100
+      },
+      {
+        "ItemType": 0,
+        "IsEquip": true,
+        "ItemName": "        철검        ",
+        "ItemAtk": 30,
+        "ItemDef": 0,
+        "ItemExp": "철로 만든 검입니다.",
+        "Amount": 1,
+        "ItemPrice": 500
+      },
+      {
+        "ItemType": 3,
+        "IsEquip": true,
+        "ItemName": "      가죽갑옷      ",
+        "ItemAtk": 0,
+        "ItemDef": 10,
+        "ItemExp": "질긴가죽으로 만든 가죽갑옷입니다.",
+        "Amount": 1,
+        "ItemPrice": 200
+      },
+      {
+        "ItemType": 1,
+        "IsEquip": true,
+        "ItemName": "    튼튼한방패      ",
+        "ItemAtk": 5,
+        "ItemDef": 10,
+        "ItemExp": "가벼운 공격은 막을 것 같은 튼튼한 방패입니다.",
+        "Amount": 1,
+        "ItemPrice": 300
+      },
+      {
+        "ItemType": 2,
+        "IsEquip": false,
+        "ItemName": "    세련된목걸이    ",
+        "ItemAtk": 3,
+        "ItemDef": 3,
+        "ItemExp": "세공이 잘 된 목걸이입니다.",
+        "Amount": 1,
+        "ItemPrice": 1000
       }
     ]
   }
